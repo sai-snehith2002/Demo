@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Us - My College</title>
+    <link rel="icon" href="images/amrita logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a0caed;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('images/header-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #2C3E50;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #a0caed;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        label, input, select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        input[type="submit"] {
+            background-color: #2C3E50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            grid-column: span 2;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #a0caed;
+        }
+
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .captcha {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #2C3E50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            grid-column: span 2;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #a0caed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 style="color: rgb(217, 198, 103);font-family: Garamond;">Contact Us at Amrita Vishwa Vidyapeetham</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a> 
+        <a href="academics.html">Academics</a> 
+        <a href="admission.html">Admission</a> 
+        <a href="gallery.html">Gallery</a>
+    </nav>
+
+    <div>
+        <section>
+            <h2>Provide Information Below </h2>
+            <form action="https://formspree.io/f/mvojrojr" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="name">Enquiry Details: </label>
+                <input type="text" id="name" name="name">
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="name">Enquiry Details: </label>
+                <input type="text" id="name" name="name">
+
+                <!-- CAPTCHA fields -->
+                <label for="input">Enter the text you see:</label>
+                <div id="captcha" class="captcha"></div>
+                <input type="text" id="input" placeholder="Enter CAPTCHA text">
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </div>
+
+<!-- JavaScript for CAPTCHA -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Generate random CAPTCHA
+    const captchaText = generateRandomString(5);
+    document.getElementById("captcha").innerText = captchaText;
+
+    // Add form submit listener
+    const form = document.getElementById("captchaForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const input = document.getElementById("input").value;
+
+        if (input === captchaText) {
+            alert("CAPTCHA verification succeeded.");
+            
+            // Assuming you are sending the form data using AJAX or some other method
+            // Once the form is successfully submitted to your server, you can show the Thank You dialogue box like so:
+            alert("Thank you for submitting the form!");
+
+            // To actually submit the form, uncomment the following line
+            // form.submit();
+        } else {
+            alert("CAPTCHA verification failed. Try again.");
+        }
+    });
+});
+
+// Generate a random string of a given length
+function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(randomIndex);
+    }
+
+    return result;
+}
+
+    </script>
+
+</body>
+
+</html>
